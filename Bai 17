@@ -1,0 +1,49 @@
+
+void InputArray(int a[], int &n)
+{
+	printf("\nInput the size of array : ");
+	scanf_s("%d", &n);
+
+	for (int i = 0; i<n; i++)
+	{
+		printf("\nElement no.%d : ", i);
+		scanf_s("%d", &a[i]);
+	}
+}
+
+void OutputArray(int a[], int n)
+{
+	for (int i = 0; i<n; i++)
+	{
+		printf("%d \t", a[i]);
+	}
+}
+
+void findMaximumProduct(int a[], int n)
+{
+	int max_product = INT_MIN;
+	int max_i, max_j;
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (max_product < a[i] * a[j])
+			{
+				max_product = a[i] * a[j];
+				max_i = i, max_j = j;
+			}
+		}
+	}
+
+	printf("\n\n2 elements in the array with the largest product: (%d, %d)", a[max_i], a[max_j]);
+}
+
+int main()
+{
+	int a[1000], n;
+	InputArray(a, n);
+	OutputArray(a, n);
+	findMaximumProduct(a, n);
+	_getch();
+	return 0;
+}
