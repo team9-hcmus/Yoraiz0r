@@ -1,0 +1,56 @@
+void InputArray(int a[], int &n)
+{
+	printf("\nInput the size of array : ");
+	scanf_s("%d", &n);
+
+	for (int i = 0; i<n; i++)
+	{
+		printf("\nElement no.%d : ", i);
+		scanf_s("%d", &a[i]);
+	}
+}
+
+void OutputArray(int a[], int n)
+{
+	for (int i = 0; i<n; i++)
+	{
+		printf("%d \t", a[i]);
+	}
+}
+
+void findMajority(int a[], int size)
+{
+	int maxCount = 0;
+	int index = -1; 
+	for (int i = 0; i < size; i++)
+	{
+			int count = 0;
+			for (int j = 0; j < size; j++)
+		{
+			if (a[i] == a[j])
+			count++;
+		}
+
+			if (count > maxCount)
+		{
+			maxCount = count;
+			index = i;
+		}
+	}
+
+if (maxCount > size / 2)
+cout << "\nThe Element that is present more than n/2 times in the array is: " << a[index] << endl;
+
+else
+cout << "\nThe Element does not exist" << endl;
+}
+
+int main()
+{
+	int a[1000], n;
+	InputArray(a, n);
+	OutputArray(a, n);
+	findMajority(a, n);
+	_getch();	
+	return 0;
+}
